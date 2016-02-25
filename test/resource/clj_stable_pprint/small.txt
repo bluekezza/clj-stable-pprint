@@ -1,0 +1,11 @@
+{:artifact-dependencies [],
+ :builds [],
+ :description nil,
+ :features [],
+ :name "Build",
+ :steps [],
+ :vcsRoots
+ [{:checkout-rules [],
+   :href "/httpAuth/app/rest/vcs-roots/id:foo_git",
+   :id "foo_git",
+   :name "foo_git"}]}
