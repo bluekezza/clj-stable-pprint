@@ -9,7 +9,7 @@ Inspired by the JSON implementation:  [json-stable-stringify](https://github.com
 ## Installation
 
 ```clojure
-:dependencies [[clj-stable-pprint "0.0.1"]]
+:dependencies [[clj-stable-pprint "0.0.2"]]
 ```
 
 ## Usage

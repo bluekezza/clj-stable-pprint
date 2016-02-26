@@ -1,4 +1,5 @@
 (ns clj-stable-pprint.core
+  (:refer-clojure :exclude [compare])
   (:require [clojure.pprint]))
 
 (defn ^:private fmap
@@ -8,13 +9,29 @@
     (apply concat
       (for [[k v] m] [k (f v)]))))
 
+(defn ^:private coerce
+  "coerces a value into it's string form"
+  [v]
+  (cond
+    (keyword? v)
+    (name v)
+    :else
+    (str v)))
+
+(defn ^:private compare
+  "implements compare where if the input types mismatch they are coerced to strings"
+  [lhs rhs]
+  (if (= (type lhs) (type rhs))
+    (clojure.core/compare lhs rhs)
+    (clojure.core/compare (coerce lhs) (coerce rhs))))
+
 (declare stabilize)
 
 (defn ^:private stabilize-map*
   [a]
   (let [sorted-map (->> a
                         seq
-                        (sort-by first)
+                        (sort-by first compare)
                         (apply concat)
                         (apply array-map))]
     (fmap #(stabilize %) sorted-map)))

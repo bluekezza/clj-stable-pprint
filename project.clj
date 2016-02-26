@@ -1,4 +1,4 @@
-(defproject clj-stable-pprint "0.0.1"
+(defproject clj-stable-pprint "0.0.2"
   :description "Provides a stable, deterministic, sorted pprint"
   :url "http://github.com/bluekezza/clj-stable-pprint"
   :license {:name "Mozilla Public License 2.0"

@@ -4,9 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.0.2] - 2016-02-26
+### Changed
+- Maps that have heterogenous keys can not be compared using clojure.core/compare. So implements a compare that coerces the values to strings if their types mismatch.
+
 ## [0.0.1] - 2016-02-25
 ### Added
 - stablilize function
 - pprint function
 
-[Unreleased]: https://github.com/bluekezza/clj-stable-pprintg/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/bluekezza/clj-stable-pprintg/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2

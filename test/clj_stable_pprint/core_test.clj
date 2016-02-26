@@ -34,17 +34,27 @@
     {:length (count (nth diff 0))
      :diff diff}))
 
-(deftest stabilize-test-with-ever-increasing-maps
-  (let [fixtures [{:in (edn-from-resource "resource/clj_stable_pprint/small.edn")
+(deftest pprint-test
+  (let [fixtures [{:name "small sized map"
+                   :in (edn-from-resource "resource/clj_stable_pprint/small.edn")
                    :out (str-from-resource "resource/clj_stable_pprint/small.txt")}
-                  {:in (edn-from-resource "resource/clj_stable_pprint/medium.edn")
+                  {:name "medium size map"
+                   :in (edn-from-resource "resource/clj_stable_pprint/medium.edn")
                    :out (str-from-resource "resource/clj_stable_pprint/medium.txt")}
-                  {:in (edn-from-resource "resource/clj_stable_pprint/large.edn")
+                  {:name "map large enough for assoc to convert array-maps to hash-maps"
+                   :in (edn-from-resource "resource/clj_stable_pprint/large.edn")
                    :out (str-from-resource "resource/clj_stable_pprint/large.txt")}
+                  {:name "simple mixed key types"
+                   :in {"b" 1, :a 0}
+                   :out "{:a 0, \"b\" 1}\n"}
+                  {:name "more mixed key types"
+                   :in {3 2, "b" 1, :a 0}
+                   :out "{3 2, :a 0, \"b\" 1}\n"}
                   ]]
-    (doseq [{in :in, out :out} fixtures]
-      (let [actual-out (with-out-str (spp/pprint in))
-            pass (= out actual-out)]
-        (when (not pass)
-          (clojure.pprint/pprint (diff-string out actual-out)))
-        (is pass)))))
+    (doseq [{scenario :name, in :in, out :out} fixtures]
+      (testing scenario
+        (let [actual-out (with-out-str (spp/pprint in))
+              pass (= out actual-out)]
+          (when (not pass)
+            (clojure.pprint/pprint (diff-string out actual-out)))
+          (is pass))))))
