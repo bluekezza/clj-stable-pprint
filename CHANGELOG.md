@@ -13,5 +13,5 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - stablilize function
 - pprint function
 
-[Unreleased]: https://github.com/bluekezza/clj-stable-pprintg/compare/v0.0.2...HEAD
-[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
+[Unreleased]: https://github.com/bluekezza/clj-stable-pprint/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/bluekezza/clj-stable-pprint/compare/v0.0.1...v0.0.2
