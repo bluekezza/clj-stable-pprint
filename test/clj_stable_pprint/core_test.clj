@@ -50,6 +50,12 @@
                   {:name "more mixed key types"
                    :in {3 2, "b" 1, :a 0}
                    :out "{3 2, :a 0, \"b\" 1}\n"}
+                  {:name "homogenous set"
+                   :in #{1 9 3 7 5}
+                   :out "#{1 3 5 7 9}\n"}
+                  {:name "heterogenous set"
+                   :in #{1 "9" 3 :7 5}
+                   :out "#{1 3 5 :7 \"9\"}\n"}
                   ]]
     (doseq [{scenario :name, in :in, out :out} fixtures]
       (testing scenario

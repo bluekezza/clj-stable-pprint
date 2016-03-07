@@ -51,7 +51,7 @@
 (extend-protocol Stable
   java.util.Set
   (stabilize [a]
-    (apply sorted-set a))
+    (apply sorted-set-by compare a))
 
   java.util.List
   (stabilize [a]
